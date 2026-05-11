@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title_head %}Listado de Clientes{% endblock title_head %}
+
+{% block content %}
+
+
+{% if clientes %}
+
+<ul>
+    {% for cliente in clientes %}
+        <li>{{ cliente.nombre }} - {{ cliente.apellido }} - {{ cliente.email }} - {{ cliente.salario }}</li>
+    {% endfor %}
+</ul>
+
+{% else %}
+
+<p>No hay clientes registrados.</p>
+
+{% endif %}
+
+{% endblock content %}
