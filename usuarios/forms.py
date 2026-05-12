@@ -25,10 +25,11 @@ class formulario_registro_usuario(UserCreationForm):
 class formulario_editar_perfil(UserChangeForm):
     password= None
     biografia= forms.CharField(widget=forms.Textarea)
+    avatar = forms.ImageField(required=False)
 
     class Meta:
         model = User
-        fields = [ 'first_name', 'last_name', 'email',]
+        fields = [ 'first_name', 'last_name', 'email', 'biografia', 'avatar']
         labels = {
             'email': 'Correo electrónico',
             'first_name': 'Nombres',

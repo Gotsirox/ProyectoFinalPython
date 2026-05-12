@@ -4,10 +4,10 @@
 
 {% block content %}
 
-<form action="{% url 'clientes:borrar_cliente' clientes.id %}" method="post">
+<form action="{% url 'clientes:borrar_cliente' cliente.id %}" method="post">
     {% csrf_token %}
 
-    <p>¿Estás seguro de que deseas eliminar al cliente "{{ clientes }}"?</p>
+    <p>¿Estás seguro de que deseas eliminar al cliente "{{ cliente }}"?</p>
 
     <input type="submit" value="Confirmar">
     <a href="{% url 'clientes:listado' %}">Cancelar</a>

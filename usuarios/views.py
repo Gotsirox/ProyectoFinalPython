@@ -40,19 +40,24 @@ def perfil_usuario(request):
 @login_required
 def perfil_editar(request):
 
-    datos_usuario = request.user.datos_usuario
+    Datos_usuario = request.user.datos_usuario
 
     if request.method == 'POST':
-        formulario =formulario_editar_perfil(request.POST, instance=request.user)
+        formulario =formulario_editar_perfil(request.POST,request.FILES, instance=request.user)
         if formulario.is_valid():
 
-            datos_usuario.biografia = formulario.cleaned_data.get('biografia')
-            datos_usuario.save()
+            if formulario.cleaned_data.get('biografia'):
+                Datos_usuario.biografia = formulario.cleaned_data.get('biografia')
 
+            if formulario.cleaned_data.get('avatar'):
+                Datos_usuario.avatar = formulario.cleaned_data.get('avatar')
+
+
+            Datos_usuario.save()
             formulario.save()
             return redirect('usuarios:perfil_usuario')
     else:
-        formulario =formulario_editar_perfil(instance=request.user, initial={'biografia': datos_usuario.biografia})
+        formulario =formulario_editar_perfil(instance=request.user, initial={'biografia': Datos_usuario.biografia,'avatar': Datos_usuario.avatar})
     
     return render(request, 'usuarios/editar_perfil.html',{'formulario':formulario})
 

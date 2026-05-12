@@ -1,11 +1,11 @@
 from django import forms
-from clientes.models import clientes
+from clientes.models import cliente
 
 
 class formulario_cliente(forms.ModelForm):
     
     class Meta:
-        model= clientes
+        model= cliente
         fields= '__all__'
 
 class formulario_busqueda(forms.Form):

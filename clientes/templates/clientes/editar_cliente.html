@@ -4,12 +4,12 @@
 
 {% block content %}
 
-<form action="{% url 'clientes:editar_cliente' clientes.id %}" method="post">
+<form action="{% url 'clientes:editar_cliente' cliente.id %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
 
     {{ form.as_p}}
 
-    <input type="submit" value="Actualizar">
+    <input type="submit" value="Actualizar Cliente">
 
 </form>
 

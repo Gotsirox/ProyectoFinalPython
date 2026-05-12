@@ -9,6 +9,13 @@
     <li>Apellido: {{ cliente.apellido }}</li>
     <li>Email: {{ cliente.email }}</li>
     <li>Salario: {{ cliente.salario }}</li>
+    <li>Imagen: 
+        {% if cliente.imagen %}
+            <img src="{{ cliente.imagen.url }}" alt="Imagen del cliente" height="200">
+        {% else %}
+            <p>No hay imagen disponible.</p>
+        {% endif %}
+    </li>
 </ul>
 
 {% endblock content %}

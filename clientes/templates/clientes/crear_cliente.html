@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<form action="{% url 'clientes:crear_cliente' %}" method="post">
+<form action="{% url 'clientes:crear_cliente' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
 
     {{ formulario.as_p}}

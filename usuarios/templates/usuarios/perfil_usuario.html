@@ -10,6 +10,13 @@
     <li>Apellidos: {{ request.user.last_name }}</li>
     <li>Correo Electrónico: {{ request.user.email }}</li>
     <li>Biografia: {{ request.user.datos_usuario.biografia }}</li>
+    <li>Avatar: 
+        {% if request.user.datos_usuario.avatar %}
+        <img src="{{ request.user.datos_usuario.avatar.url }}" alt="Avatar" width="100">
+        {% else %}
+        <p>Avatar no disponible</p>
+        {% endif %}
+        </li>
 </ul>
 
 <a href="{% url "usuarios:editar_perfil" %}">Editar Perfil</a>
