@@ -4,14 +4,29 @@
 
 {% block content %}
 
+<a href="{% url 'clientes:crear_cliente' %}">Crear cliente</a>
 
-{% if clientes %}
 
-<ul>
-    {% for cliente in clientes %}
-        <li>{{ cliente.nombre }} - {{ cliente.apellido }} - {{ cliente.email }} - {{ cliente.salario }}</li>
-    {% endfor %}
-</ul>
+<form action="{% url 'clientes:listado' %}" method="get">
+
+    {{ formulario.as_p }}
+
+    <input type="submit" value="Buscar">
+</form>
+
+{% if listado %}
+
+    <ul>
+        {% for cliente in listado %}
+            <li>
+                <a href="{% url 'clientes:detalle_cliente' cliente.id %}">{{cliente}}</a>
+                <span style="color: red;">|</span>
+                <a href="{% url 'clientes:editar_cliente' cliente.id %}">Editar</a>
+                <span style="color: red;">|</span>
+                <a href="{% url 'clientes:borrar_cliente' cliente.id %}">Eliminar</a>
+            </li>
+        {% endfor %}
+    </ul>
 
 {% else %}
 

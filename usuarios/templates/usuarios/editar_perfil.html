@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title_head %}Editar Perfil{% endblock title_head %}
+
+{% block content %}
+
+<form action="{% url 'usuarios:editar_perfil' %}" method="post">
+    {% csrf_token %}
+
+    {{ formulario.as_p}}
+
+    <input type="submit" value="Guardar Cambios">
+
+</form>
+
+{% endblock content %}

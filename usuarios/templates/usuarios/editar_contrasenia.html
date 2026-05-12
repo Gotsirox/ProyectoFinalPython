@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title_head %}Editar Contraseña Usuario{% endblock title_head %}
+
+{% block content %}
+
+<form action="{% url 'usuarios:editar_contrasenia' %}" method="post">
+    {% csrf_token %}
+
+    {{ form.as_p}}
+
+    <input type="submit" value="Cambiar Contraseña">
+
+</form>
+
+{% endblock content %}
